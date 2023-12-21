@@ -336,15 +336,8 @@ function countVowels(str) {
  *   isPalindrome('No lemon, no melon') => true
  */
 function isPalindrome(str) {
-  const myStr = str
-    .toLowerCase()
-    .replaceAll(' ', '')
-    .split('')
-    .map((char) => {
-      if (char !== '!' && char !== '?' && char !== ',') return char;
-      return '';
-    });
-  if (myStr.toReversed().join('') === myStr.join('')) return true;
+  const myStr = str.toLowerCase().replace(/\W/g, '').split('');
+  if (myStr.join('') === myStr.reverse().join('')) return true;
   return false;
 }
 
@@ -382,7 +375,7 @@ function reverseWords(str) {
   return str
     .split(' ')
     .map((word) => {
-      return word.split('').toReversed().join('');
+      return word.split('').reverse().join('');
     })
     .join(' ');
 }
